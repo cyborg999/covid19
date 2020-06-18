@@ -1,28 +1,52 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <h1 v-if="seen">{{ msg }}</h1>
+      <Todos v-bind:students="students"/>
+      <input type="text" v-model="msg" name="">
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Todos from "./components/Todos.vue"
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name : "app"
+    , components : {
+      Todos
+    }
+    , data(){
+        return {
+          msg : "Hello World"
+          , seen : true
+          , students : [
+            { name : "Jordan", complete : false }
+            , { name : "Dandalan", complete : false }
+            , { name : "Jord", complete : true }
+            , { name : "George", complete : false }
+          ]
+        
+        }
+    }
+    , mounted : function(){
+      console.log("mounted")
+    }
+    , created : function(){
+      
+      console.log("created")
+    }
+    , watch: {
+      msg : function(before, after) {
+        console.log(before, after)
+      }
+    }
   }
-}
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .container {
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid #eee;
+  }
 </style>
