@@ -1,8 +1,7 @@
 <template>
 	<div class="navigation card border-light mb-12">
     <div class="card-header">
-        <p>Status: {{ status }}</p>
-      <label for="">Search Country
+      <label for="">{{ status }}
         <input type="text" v-model="search" class="form-control form-inline">
         <ul>
           <li 
@@ -66,7 +65,7 @@
         .then(response => response.json())
         .then(data => {
           this.countries = data
-          this.status = "loaded"
+          this.status = "Search Country"
         })
       }
       , setSlug : function(country){

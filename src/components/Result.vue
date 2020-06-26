@@ -1,8 +1,7 @@
 <template>
     <div>
         <div class="jumbotron">
-            <h1 class="display-4">{{ current.country }}</h1>
-            {{ this.status }}
+            <h1 class="display-4">{{ status }}</h1>
             <hr class="my-4">
             <Mychart v-bind:data="data"/>
             {{ this.data }}
@@ -44,7 +43,7 @@ export default {
             .then(response => response.json())
             .then(data => {
                 this.data = data
-                this.status = "loaded"
+                this.status = this.current.country
             })
         }
         , getCountry : function(){
@@ -54,7 +53,7 @@ export default {
             .then(response => response.json())
             .then(data => {
                 this.data = data[data.length-1]
-                this.status = "loaded"
+                this.status = this.current.country
             })
         }
     }

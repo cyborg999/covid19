@@ -142,9 +142,9 @@ export default {
                         label: 'Dataset 1'
                     }],
                     labels: [
-                        'Confirmed('+this.data.Confirmed+')',
-                        'Deaths('+this.data.Deaths+')',
-                        'Recovered('+this.data.Recovered+')'
+                        'Confirmed('+this.data.TotalConfirmed+')',
+                        'Deaths('+this.data.TotalDeaths+')',
+                        'Recovered('+this.data.TotalRecovered+')'
                     ]
                 },
                 options: {
