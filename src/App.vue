@@ -1,40 +1,50 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1 v-if="seen">{{ msg }}</h1>
-      <Todos v-bind:students="students"/>
-      <input type="text" v-model="msg" name="">
+      <Navi v-on:get_data="getSlug"/>
+      <Result v-bind:current="currentCountry"/>
     </div>
   </div>
 </template>
 
 <script>
-  import Todos from "./components/Todos.vue"
+  import 'bootstrap/dist/css/bootstrap.css';
+  import Result from "./components/Result.vue"
+  import Navi from "./components/Navi.vue"
 
+// data
+// country : https://api.covid19api.com/total/country/south-africa
+// world : https://api.covid19api.com/world/total
   export default {
     name : "app"
     , components : {
-      Todos
+      Navi
+      , Result
     }
     , data(){
         return {
           msg : "Hello World"
           , seen : true
-          , students : [
-            { name : "Jordan", complete : false }
-            , { name : "Dandalan", complete : false }
-            , { name : "Jord", complete : true }
-            , { name : "George", complete : false }
-          ]
-        
+          , slug : ''
+          , currentCountry : { country : "World"}
+           ,  chartOptions: {
+                series: [{
+                data: [1,2,3] // sample data
+                }]
+            }
         }
     }
+    , methods : {
+      getSlug : function(country){
+        this.currentCountry = country
+      }
+    }
     , mounted : function(){
-      console.log("mounted")
+      //load all data
+ 
     }
     , created : function(){
       
-      console.log("created")
     }
     , watch: {
       msg : function(before, after) {
@@ -44,9 +54,5 @@
   }
 </script>
 <style>
-  .container {
-    width: 700px;
-    margin: 0 auto;
-    border: 1px solid #eee;
-  }
+
 </style>

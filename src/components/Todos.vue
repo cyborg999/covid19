@@ -33,7 +33,6 @@
 	}
 	.complete {
 		font-weight: 700;
-		background: red;
-		color: white;
+		color: green;
 	}
 </style>
